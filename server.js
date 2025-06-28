@@ -1,13 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors');
+// const cors = require('cors');
 
 dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://sellpicoin.in/', 'https://www.sellpicoin.in/', 'https://front-ykr8.onrender.com/'], // replace with your domains
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Routes
